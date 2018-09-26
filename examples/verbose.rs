@@ -10,7 +10,7 @@ use structopt::StructOpt;
 #[structopt(name = "verbose", about = "An example using verbose flag")]
 struct Opt {
     #[structopt(flatten)]
-    verbose: structopt_flags::verbose::Verbose,
+    verbose: structopt_flags::Verbose,
 }
 
 fn main() -> Result<(), Error> {

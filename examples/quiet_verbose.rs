@@ -13,7 +13,7 @@ use structopt::StructOpt;
 )]
 struct Opt {
     #[structopt(flatten)]
-    quiet_verbose: structopt_flags::verbose::QuietVerbose,
+    quiet_verbose: structopt_flags::QuietVerbose,
 }
 
 fn main() -> Result<(), Error> {

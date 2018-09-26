@@ -2,4 +2,7 @@ extern crate log;
 #[macro_use]
 extern crate structopt;
 
-pub mod verbose;
+mod verbose;
+
+pub use verbose::QuietVerbose;
+pub use verbose::Verbose;
