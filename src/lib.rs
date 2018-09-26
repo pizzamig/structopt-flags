@@ -3,6 +3,7 @@
 //!
 //! ```rust
 //! extern crate structopt_flags;
+//! #[macro_use]
 //! extern crate structopt;
 //!
 //! use structopt::StructOpt;

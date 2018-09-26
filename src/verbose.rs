@@ -9,6 +9,7 @@ use std::fmt;
 ///
 /// ```rust
 /// extern crate structopt_flags;
+/// #[macro_use]
 /// extern crate structopt;
 ///
 /// use structopt::StructOpt;
@@ -77,6 +78,7 @@ impl LogLevel for Verbose {
 ///
 /// ```rust
 /// extern crate structopt_flags;
+/// #[macro_use]
 /// extern crate structopt;
 ///
 /// use structopt::StructOpt;
