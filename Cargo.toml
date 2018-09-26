@@ -6,3 +6,7 @@ authors = ["Luca Pizzamiglio <luca.pizzamiglio@gmail.com>"]
 [dependencies]
 structopt = "0.2"
 log = "0.4"
+
+[dev-dependencies]
+assert_cmd = "0.4"
+failure = "*"
