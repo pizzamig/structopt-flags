@@ -2,7 +2,7 @@ use log::Level;
 use std::fmt;
 
 trait LogLevel {
-    fn get_log_level(&self) -> log::Level;
+    fn get_log_level(&self) -> Level;
 }
 
 #[derive(StructOpt, Debug, Clone)]
@@ -26,7 +26,7 @@ impl fmt::Display for Verbose {
 }
 
 impl LogLevel for Verbose {
-    fn get_log_level(&self) -> log::Level {
+    fn get_log_level(&self) -> Level {
         match self.verbosity_level {
             0 => Level::Error,
             1 => Level::Warn,
@@ -81,7 +81,7 @@ impl fmt::Display for QuietVerbose {
 }
 
 impl LogLevel for QuietVerbose {
-    fn get_log_level(&self) -> log::Level {
+    fn get_log_level(&self) -> Level {
         match self.get_level() {
             0 => Level::Error,
             1 => Level::Warn,
