@@ -62,3 +62,25 @@ fn test_quietverbose_4() {
     let mut cmd = Command::cargo_example("quiet_verbose").unwrap();
     cmd.args(&["-q", "-v"]).assert().failure();
 }
+
+#[test]
+fn test_simpleverbose_1() {
+    let mut cmd = Command::cargo_example("simple_verbose").unwrap();
+    let output = cmd.unwrap();
+    output.clone().assert().success();
+    output.assert().stdout("False\n");
+}
+
+#[test]
+fn test_simpleverbose_2() {
+    let mut cmd = Command::cargo_example("simple_verbose").unwrap();
+    let output = cmd.args(&["-v"]).unwrap();
+    output.clone().assert().success();
+    output.assert().stdout("True\n");
+}
+
+#[test]
+fn test_simpleverbose_3() {
+    let mut cmd = Command::cargo_example("simple_verbose").unwrap();
+    cmd.args(&["-vv"]).assert().failure();
+}

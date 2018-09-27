@@ -42,4 +42,5 @@ pub trait LogLevel {
 }
 
 pub use verbose::QuietVerbose;
+pub use verbose::SimpleVerbose;
 pub use verbose::Verbose;

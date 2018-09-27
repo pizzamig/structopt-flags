@@ -24,7 +24,7 @@ use std::fmt;
 ///
 /// fn main() {
 ///     let opt = Opt::from_args();
-///     let log_level = opt.verbose.get_log_level().unwrap();
+///     let filter_level = opt.verbose.get_level_filter();
 ///     // set log level
 /// }
 /// ```
@@ -33,6 +33,7 @@ pub struct Verbose {
     /// Increase the output's verbosity level (default:info)
     /// Pass many times to increase verbosity level, up to 4.
     #[structopt(
+        name = "verbose",
         long = "verbose",
         short = "v",
         parse(from_occurrences),
@@ -93,9 +94,8 @@ impl LogLevel for Verbose {
 ///
 /// fn main() {
 ///     let opt = Opt::from_args();
-///     if let Some(log_level) = opt.verbose.get_log_level() {
-///         // set log level
-///     }
+///     let filter_level = opt.verbose.get_level_filter();
+///     // set log level
 /// }
 /// ```
 #[derive(StructOpt, Debug, Clone)]
@@ -103,11 +103,11 @@ pub struct QuietVerbose {
     /// Increase the output's verbosity level
     /// Pass many times to increase verbosity level, up to 3.
     #[structopt(
-        name = "verbose",
+        name = "quietverbose",
         long = "verbose",
         short = "v",
         parse(from_occurrences),
-        conflicts_with = "quiet",
+        conflicts_with = "quietquiet",
         raw(global = "true")
     )]
     verbosity_level: u8,
@@ -116,11 +116,11 @@ pub struct QuietVerbose {
     /// Used once, it will set error log level.
     /// Used twice, will slient te log completely
     #[structopt(
-        name = "quiet",
+        name = "quietquiet",
         long = "quiet",
         short = "q",
         parse(from_occurrences),
-        conflicts_with = "verbose",
+        conflicts_with = "quietverbose",
         raw(global = "true")
     )]
     quiet_level: u8,
@@ -162,5 +162,56 @@ impl LogLevel for QuietVerbose {
     fn get_log_level(&self) -> Option<Level> {
         let filter = self.get_filter();
         filter.to_level()
+    }
+}
+
+/// This struct implements the `--verbose` cli option as a boolean flag
+///
+/// By default, the log level is set to warning.
+/// Multiple occurrences of `-v` are not supported
+///
+/// ```rust
+/// extern crate structopt_flags;
+/// #[macro_use]
+/// extern crate structopt;
+///
+/// use structopt::StructOpt;
+///
+/// #[derive(Debug, StructOpt)]
+/// #[structopt(name = "verbose", about = "An example using verbose flag")]
+/// struct Opt {
+///     #[structopt(flatten)]
+///     verbose: structopt_flags::SimpleVerbose,
+/// }
+///
+/// fn main() {
+///     let opt = Opt::from_args();
+///     if opt.verbose.verbose {
+///         println!("Verbose output enabled");
+///     } else {
+///         println!("No verbose output");
+///     }
+/// }
+/// ```
+#[derive(StructOpt, Debug, Clone)]
+pub struct SimpleVerbose {
+    /// Enable the verbose output
+    /// No multiple occurrences are supported
+    #[structopt(
+        name = "simpleverbose",
+        long = "verbose",
+        short = "v",
+        raw(global = "true")
+    )]
+    pub verbose: bool,
+}
+
+impl fmt::Display for SimpleVerbose {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        if self.verbose {
+            write!(f, "True")
+        } else {
+            write!(f, "False")
+        }
     }
 }

@@ -9,3 +9,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Verbose and QuietVerbose implentation are added
 - LogLevel trait, for all option providing a log setting
 - Documentation
+- SimpleVerbose implementation, a boolean verbose flag
