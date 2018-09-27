@@ -2,7 +2,7 @@ use super::LogLevel;
 use log::Level;
 use std::fmt;
 
-/// This struct provides the `--verbose`
+/// This struct provides the `--verbose` cli option
 ///
 /// By default, the log level is set to error.
 /// Multiple occurrences, will increase the verbosity level up to 4.
@@ -69,7 +69,7 @@ impl LogLevel for Verbose {
     }
 }
 
-/// This struct implements the `--verbose` and the `--quiet`
+/// This struct implements the `--verbose` and the `--quiet` cli options
 ///
 /// By default, the log level is set to warning.
 /// Multiple occurrences of `-v`, will increase the verbosity level up to 3.
