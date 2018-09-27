@@ -7,4 +7,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - Verbose and QuietVerbose implentation are added
+- LogLevel trait, for all option providing a log setting
 - Documentation

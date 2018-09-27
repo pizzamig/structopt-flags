@@ -18,7 +18,7 @@
 //!
 //! fn main() {
 //!     let opt = Opt::from_args();
-//!     let log_level = opt.verbose.get_log_level();
+//!     let log_level_filter = opt.verbose.get_level_filter();
 //! }
 //! ```
 extern crate log;
@@ -27,13 +27,18 @@ extern crate structopt;
 
 mod verbose;
 
-pub use log::Level;
+pub use log::{Level, LevelFilter};
 /// This trait is designed to provide a log level compatible with the Log crates
 pub trait LogLevel {
     /// Return the log level.
     ///
     /// The log level could be None if the log has been switched off
     fn get_log_level(&self) -> Option<Level>;
+
+    /// Return the level filter.
+    ///
+    /// The log level could be None if the log has been switched off
+    fn get_level_filter(&self) -> LevelFilter;
 }
 
 pub use verbose::QuietVerbose;
