@@ -3,8 +3,13 @@ rust:
   - stable
   - beta
   - nightly
+before_script:
+  - rustup component add clippy-preview
 matrix:
   allow_failures:
     - rust: nightly
   fast_finish: true
 cache: cargo
+script:
+  - cargo clippy -- -D warnings
+  - cargo test

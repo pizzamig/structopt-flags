@@ -9,7 +9,6 @@ repository = "https://github.com/pizzamig/structopt-flags"
 [badges]
 travis-ci = { repository = "pizzamig/structopt-flags" }
 
-
 [dependencies]
 structopt = "0.2"
 log = "0.4"
