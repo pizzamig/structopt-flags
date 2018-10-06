@@ -42,8 +42,8 @@ pub struct Verbose {
     verbosity_level: u8,
 }
 
-impl Verbose {
-    fn get_filter(&self) -> LevelFilter {
+impl LogLevel for Verbose {
+    fn get_level_filter(&self) -> LevelFilter {
         match self.verbosity_level {
             0 => LevelFilter::Error,
             1 => LevelFilter::Warn,
@@ -52,21 +52,15 @@ impl Verbose {
             _ => LevelFilter::Trace,
         }
     }
+
+    fn get_log_level(&self) -> Option<Level> {
+        self.get_level_filter().to_level()
+    }
 }
 
 impl fmt::Display for Verbose {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}", self.get_filter())
-    }
-}
-
-impl LogLevel for Verbose {
-    fn get_level_filter(&self) -> LevelFilter {
-        self.get_filter()
-    }
-    fn get_log_level(&self) -> Option<Level> {
-        let filter = self.get_filter();
-        filter.to_level()
+        write!(f, "{}", self.get_level_filter())
     }
 }
 
@@ -126,8 +120,8 @@ pub struct QuietVerbose {
     quiet_level: u8,
 }
 
-impl QuietVerbose {
-    fn get_filter(&self) -> LevelFilter {
+impl LogLevel for QuietVerbose {
+    fn get_level_filter(&self) -> LevelFilter {
         let quiet: i8 = if self.quiet_level > 1 {
             2
         } else {
@@ -147,21 +141,14 @@ impl QuietVerbose {
             _ => LevelFilter::Trace,
         }
     }
+    fn get_log_level(&self) -> Option<Level> {
+        self.get_level_filter().to_level()
+    }
 }
 
 impl fmt::Display for QuietVerbose {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}", self.get_filter())
-    }
-}
-
-impl LogLevel for QuietVerbose {
-    fn get_level_filter(&self) -> LevelFilter {
-        self.get_filter()
-    }
-    fn get_log_level(&self) -> Option<Level> {
-        let filter = self.get_filter();
-        filter.to_level()
+        write!(f, "{}", self.get_level_filter())
     }
 }
 
