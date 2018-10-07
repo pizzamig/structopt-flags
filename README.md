@@ -1,7 +1,6 @@
 # structopt-flags
 
-[![Build Status](https://travis-ci.org/pizzamig/structopt-flags.svg)][Travis]
-[Travis]: https://travis-ci.org/pizzamig/structopt-flags
+[![Build Status](https://travis-ci.org/pizzamig/structopt-flags.svg)](https://travis-ci.org/pizzamig/structopt-flags)
 [![Docs](https://docs.rs/structopt-flags/badge.svg)](https://docs.rs/structopt-flags)
 [![dependency status](https://deps.rs/repo/github/pizzamig/structopt-flags/status.svg)](https://deps.rs/repo/github/pizzamig/structopt-flags)
 
