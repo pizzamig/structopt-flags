@@ -1,6 +1,6 @@
 [package]
 name = "structopt-flags"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Luca Pizzamiglio <luca.pizzamiglio@gmail.com>"]
 readme = "README.md"
 license = "BSD-3-Clause"
@@ -12,7 +12,7 @@ build = "build.rs"
 
 [badges]
 travis-ci = { repository = "pizzamig/structopt-flags" }
-maintainance = { status = "actively-developed" }
+maintenance = { status = "actively-developed" }
 
 [dependencies]
 structopt = "0.2"
