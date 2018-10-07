@@ -4,15 +4,24 @@ version = "0.1.0"
 authors = ["Luca Pizzamiglio <luca.pizzamiglio@gmail.com>"]
 readme = "README.md"
 license = "BSD 3-Clause"
+categories = ["command-line-interface"]
+keywords = ["clap","structopt","cli","flags"]
 repository = "https://github.com/pizzamig/structopt-flags"
+description = "Collection of reusable flags for StructOpt"
+build = "build.rs"
 
 [badges]
 travis-ci = { repository = "pizzamig/structopt-flags" }
+maintainance = { status = "actively-developed" }
 
 [dependencies]
 structopt = "0.2"
 log = "0.4"
 
+[build-dependencies]
+skeptic = "0.13"
+
 [dev-dependencies]
 assert_cmd = "0.4"
 failure = "*"
+skeptic = "0.13"
