@@ -25,6 +25,7 @@ extern crate log;
 #[macro_use]
 extern crate structopt;
 
+mod ipv4;
 mod logopt;
 mod verbose;
 
@@ -42,8 +43,19 @@ pub trait LogLevel {
     fn get_level_filter(&self) -> LevelFilter;
 }
 
+pub use std::net::Ipv4Addr;
+
+pub trait Ipv4Address {
+    fn get_ipv4_addr(&self) -> Option<Ipv4Addr>;
+}
+
+pub use ipv4::HostV4Opt;
 pub use logopt::LogLevelOpt;
 pub use logopt::LogLevelOptLower;
 pub use verbose::QuietVerbose;
 pub use verbose::SimpleVerbose;
 pub use verbose::Verbose;
+
+pub trait GetOrDefault<T> {
+    fn get_or_default(&self, default: T) -> T;
+}
