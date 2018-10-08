@@ -1,3 +1,4 @@
+#[allow(unused_imports)]
 extern crate failure;
 extern crate structopt_flags;
 #[macro_use]

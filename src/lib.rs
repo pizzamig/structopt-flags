@@ -25,6 +25,7 @@ extern crate log;
 #[macro_use]
 extern crate structopt;
 
+mod logopt;
 mod verbose;
 
 pub use log::{Level, LevelFilter};
@@ -41,6 +42,8 @@ pub trait LogLevel {
     fn get_level_filter(&self) -> LevelFilter;
 }
 
+pub use logopt::LogLevelOpt;
+pub use logopt::LogLevelOptLower;
 pub use verbose::QuietVerbose;
 pub use verbose::SimpleVerbose;
 pub use verbose::Verbose;
