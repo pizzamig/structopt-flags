@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - LogLevelOpt and LotLevelOptLower, to pass log level as -L or -l
+- GetWithDefault trait, to allow users to define their own defaults
+- VerboseNoDef, LogLevelNoDef, LogLevelNoDefLower: options with a user provided defaults
+- HostV4Opt: first ipv4 address option
 
 ### Fixed
 - Fixing Cargo.toml metadata

@@ -20,6 +20,7 @@ For instance:
 ```rust
 extern crate failure;
 extern crate structopt_flags;
+#[allow(unused_imports)]
 #[macro_use]
 extern crate structopt;
 

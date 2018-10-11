@@ -1,4 +1,4 @@
-use super::LogLevel;
+use super::{GetWithDefault, LogLevel};
 use log::{Level, LevelFilter};
 use std::fmt;
 
@@ -70,7 +70,7 @@ impl fmt::Display for LogLevelOpt {
 /// use structopt_flags::LogLevel; // to access get_log_level
 ///
 /// #[derive(Debug, StructOpt)]
-/// #[structopt(name = "log_level_opt_lower", about = "An example using the LogLevelOpt option")]
+/// #[structopt(name = "log_level_opt_lower", about = "An example using the LogLevelOptLower option")]
 /// struct Opt {
 ///     #[structopt(flatten)]
 ///     log_level: structopt_flags::LogLevelOptLower,
@@ -110,5 +110,117 @@ impl LogLevel for LogLevelOptLower {
 impl fmt::Display for LogLevelOptLower {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "{}", self.log_level)
+    }
+}
+
+/// This struct provides the `--log` and `-L` cli option
+///
+/// No default value is provided
+///
+/// ```rust
+/// extern crate log;
+/// extern crate structopt_flags;
+/// #[macro_use]
+/// extern crate structopt;
+///
+/// use log::LevelFilter;
+/// use structopt::StructOpt;
+/// use structopt_flags::GetWithDefault; // to access get_log_level
+///
+/// #[derive(Debug, StructOpt)]
+/// #[structopt(name = "log_level_no_def", about = "An example using the LogLevelNoDef option")]
+/// struct Opt {
+///     #[structopt(flatten)]
+///     log_level: structopt_flags::LogLevelNoDef,
+/// }
+///
+/// fn main() {
+///     let opt = Opt::from_args();
+///     let filter_level = opt.log_level.get_with_default(LevelFilter::Warn);
+///     // set log level
+/// }
+/// ```
+#[derive(StructOpt, Debug, Clone)]
+pub struct LogLevelNoDef {
+    /// Set the log level to run under
+    /// Possible values are: off, error, warn, info, debug, trace
+    #[structopt(
+        name = "loglevel",
+        long = "log-level",
+        short = "L",
+        raw(global = "true"),
+    )]
+    log_level: Option<LevelFilter>,
+}
+
+impl GetWithDefault for LogLevelNoDef {
+    type Item = LevelFilter;
+    fn get_with_default(&self, default: Self::Item) -> Self::Item {
+        self.log_level.unwrap_or(default)
+    }
+}
+
+impl fmt::Display for LogLevelNoDef {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self.log_level {
+            Some(x) => write!(f, "{}", x),
+            None => write!(f, "None"),
+        }
+    }
+}
+
+/// This struct provides the `--log` and `-l` cli option
+///
+/// No default value is provided
+///
+/// ```rust
+/// extern crate log;
+/// extern crate structopt_flags;
+/// #[macro_use]
+/// extern crate structopt;
+///
+/// use log::LevelFilter;
+/// use structopt::StructOpt;
+/// use structopt_flags::GetWithDefault; // to access get_log_level
+///
+/// #[derive(Debug, StructOpt)]
+/// #[structopt(name = "log_level_no_def_lower", about = "An example using the LogLevelNoDefLower option")]
+/// struct Opt {
+///     #[structopt(flatten)]
+///     log_level: structopt_flags::LogLevelNoDefLower,
+/// }
+///
+/// fn main() {
+///     let opt = Opt::from_args();
+///     let filter_level = opt.log_level.get_with_default(LevelFilter::Warn);
+///     // set log level
+/// }
+/// ```
+#[derive(StructOpt, Debug, Clone)]
+pub struct LogLevelNoDefLower {
+    /// Set the log level to run under
+    /// Possible values are: off, error, warn, info, debug, trace
+    #[structopt(
+        name = "loglevel",
+        long = "log-level",
+        short = "l",
+        raw(global = "true"),
+    )]
+    log_level: Option<LevelFilter>,
+}
+
+impl GetWithDefault for LogLevelNoDefLower {
+    type Item = LevelFilter;
+    fn get_with_default(&self, default: Self::Item) -> Self::Item {
+        self.log_level.unwrap_or(default)
+    }
+}
+
+impl fmt::Display for LogLevelNoDefLower {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self.log_level {
+            Some(x) => write!(f, "{}", x),
+            None => write!(f, "None"),
+        }
     }
 }

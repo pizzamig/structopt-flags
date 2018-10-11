@@ -1,8 +1,8 @@
 #[allow(unused_imports)]
-extern crate failure;
-extern crate structopt_flags;
 #[macro_use]
 extern crate structopt;
+extern crate failure;
+extern crate structopt_flags;
 
 use failure::Error;
 use structopt::StructOpt;

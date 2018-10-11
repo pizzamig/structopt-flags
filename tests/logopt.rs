@@ -58,3 +58,59 @@ fn test_logoptlower_4() {
     let mut cmd = Command::cargo_example("logoptlower").unwrap();
     cmd.args(&["-L"]).assert().failure();
 }
+
+#[test]
+fn test_logopt_nodef_1() {
+    let mut cmd = Command::cargo_example("logopt_no_default").unwrap();
+    let output = cmd.unwrap();
+    output.clone().assert().success();
+    output.assert().stdout("DEBUG\n");
+}
+
+#[test]
+fn test_logopt_nodef_2() {
+    let mut cmd = Command::cargo_example("logopt_no_default").unwrap();
+    let output = cmd.args(&["-L", "WARN"]).unwrap();
+    output.clone().assert().success();
+    output.assert().stdout("WARN\n");
+}
+
+#[test]
+fn test_logopt_nodef_3() {
+    let mut cmd = Command::cargo_example("logopt_no_default").unwrap();
+    cmd.args(&["-L", "none"]).assert().failure();
+}
+
+#[test]
+fn test_logopt_nodef_4() {
+    let mut cmd = Command::cargo_example("logopt_no_default").unwrap();
+    cmd.args(&["-l"]).assert().failure();
+}
+
+#[test]
+fn test_logoptlower_nodef_1() {
+    let mut cmd = Command::cargo_example("logoptlower_no_default").unwrap();
+    let output = cmd.unwrap();
+    output.clone().assert().success();
+    output.assert().stdout("ERROR\n");
+}
+
+#[test]
+fn test_logoptlower_nodef_2() {
+    let mut cmd = Command::cargo_example("logoptlower_no_default").unwrap();
+    let output = cmd.args(&["-l", "WARN"]).unwrap();
+    output.clone().assert().success();
+    output.assert().stdout("WARN\n");
+}
+
+#[test]
+fn test_logoptlower_nodef_3() {
+    let mut cmd = Command::cargo_example("logoptlower_no_default").unwrap();
+    cmd.args(&["-l", "none"]).assert().failure();
+}
+
+#[test]
+fn test_logoptlower_nodef_4() {
+    let mut cmd = Command::cargo_example("logoptlower_no_default").unwrap();
+    cmd.args(&["-L"]).assert().failure();
+}

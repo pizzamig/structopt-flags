@@ -34,6 +34,36 @@ fn test_verbose_4() {
 }
 
 #[test]
+fn test_verbosenodef_1() {
+    let mut cmd = Command::cargo_example("verbose_no_default").unwrap();
+    let output = cmd.unwrap();
+    output.clone().assert().success();
+    output.assert().stdout("OFF\n");
+}
+
+#[test]
+fn test_verbosenodef_2() {
+    let mut cmd = Command::cargo_example("verbose_no_default").unwrap();
+    let output = cmd.args(&["-v"]).unwrap();
+    output.clone().assert().success();
+    output.assert().stdout("ERROR\n");
+}
+
+#[test]
+fn test_verbosenodef_3() {
+    let mut cmd = Command::cargo_example("verbose_no_default").unwrap();
+    let output = cmd.args(&["-vvvvvvvvv"]).unwrap();
+    output.clone().assert().success();
+    output.assert().stdout("TRACE\n");
+}
+
+#[test]
+fn test_verbosenodef_4() {
+    let mut cmd = Command::cargo_example("verbose_no_default").unwrap();
+    cmd.args(&["-q"]).assert().failure();
+}
+
+#[test]
 fn test_quietverbose_1() {
     let mut cmd = Command::cargo_example("quiet_verbose").unwrap();
     let output = cmd.unwrap();
