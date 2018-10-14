@@ -113,7 +113,7 @@ impl fmt::Display for LogLevelOptLower {
     }
 }
 
-/// This struct provides the `--log` and `-L` cli option
+/// This struct provides the `--log` and `-L` cli option, with no default
 ///
 /// No default value is provided
 ///
@@ -169,7 +169,7 @@ impl fmt::Display for LogLevelNoDef {
     }
 }
 
-/// This struct provides the `--log` and `-l` cli option
+/// This struct provides the `--log` and `-l` cli option, with no default
 ///
 /// No default value is provided
 ///

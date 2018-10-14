@@ -1,6 +1,17 @@
 //! `structopt-flags` is a collection of reusable CLI flags and options
 //! based on structopt
 //!
+//! Every flag or option is already pre-configured and can be used marking the field as `flatten`
+//!
+//! Currently, a set of verbosity flags and log level option are provided.
+//! Some flags and options are provided in multiple configuration, to leave the choice to the
+//! developer which one to use.
+//! For instance, there are 4 type for vebosity flag:
+//! * Verbose: -v flag, it provides a log level with Error as default level
+//! * QuietVerbose: -v flag to increase vebosity, -q to decrease it; default level: Warning
+//! * SimpleVebose: -v flag as boolean, no default log level provided
+//! * VeboseNoDef: -v flag, to increase verbosity, but without a default value
+//! # Example
 //! ```rust
 //! extern crate structopt_flags;
 //! #[macro_use]
@@ -25,7 +36,7 @@ extern crate log;
 #[macro_use]
 extern crate structopt;
 
-mod ipv4;
+mod ip;
 mod logopt;
 mod verbose;
 
@@ -54,13 +65,9 @@ pub trait GetWithDefault {
     fn get_with_default(&self, default: Self::Item) -> Self::Item;
 }
 
-pub use std::net::Ipv4Addr;
-
-pub trait Ipv4Address {
-    fn get_ipv4_addr(&self) -> Option<Ipv4Addr>;
-}
-
-pub use ipv4::HostV4Opt;
+pub use ip::HostOpt;
+pub use ip::HostV4Opt;
+pub use ip::HostV6Opt;
 pub use logopt::LogLevelNoDef;
 pub use logopt::LogLevelNoDefLower;
 pub use logopt::LogLevelOpt;

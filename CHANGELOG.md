@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - GetWithDefault trait, to allow users to define their own defaults
 - VerboseNoDef, LogLevelNoDef, LogLevelNoDefLower: options with a user provided defaults
 - HostV4Opt: first ipv4 address option
+- HostV6Opt: first ipv6 address option
+- HostOpt: first ip address option
 
 ### Fixed
 - Fixing Cargo.toml metadata

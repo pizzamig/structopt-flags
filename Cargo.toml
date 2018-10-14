@@ -1,6 +1,6 @@
 [package]
 name = "structopt-flags"
-version = "0.1.1"
+version = "0.1.99"
 authors = ["Luca Pizzamiglio <luca.pizzamiglio@gmail.com>"]
 readme = "README.md"
 license = "BSD-3-Clause"
@@ -22,6 +22,6 @@ log = "0.4"
 skeptic = "0.13"
 
 [dev-dependencies]
-assert_cmd = "0.9"
+assert_cmd = "0.10"
 failure = "0.1"
 skeptic = "0.13"

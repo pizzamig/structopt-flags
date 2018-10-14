@@ -6,7 +6,7 @@
 
 A set of reusable flags and option for your CLIs using StructOpt
 
-## Geting started
+## Getting started
 
 Add the crate to your project, adding this in `Cargo.toml`:
 
@@ -19,10 +19,10 @@ In your code, you can use one or more flags provided by this crate.
 For instance:
 ```rust
 extern crate failure;
-extern crate structopt_flags;
 #[allow(unused_imports)]
 #[macro_use]
 extern crate structopt;
+extern crate structopt_flags;
 
 use failure::Error;
 use structopt::StructOpt;
