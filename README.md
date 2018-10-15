@@ -12,7 +12,7 @@ Add the crate to your project, adding this in `Cargo.toml`:
 
 ```toml
 [dependencies]
-structopt-flags = "0.1"
+structopt-flags = "0.2"
 ```
 
 In your code, you can use one or more flags provided by this crate.
