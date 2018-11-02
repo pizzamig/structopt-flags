@@ -66,8 +66,11 @@ pub trait GetWithDefault {
 }
 
 pub use ip::HostOpt;
+pub use ip::HostParam;
 pub use ip::HostV4Opt;
+pub use ip::HostV4Param;
 pub use ip::HostV6Opt;
+pub use ip::HostV6Param;
 pub use logopt::LogLevelNoDef;
 pub use logopt::LogLevelNoDefLower;
 pub use logopt::LogLevelOpt;

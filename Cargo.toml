@@ -1,6 +1,6 @@
 [package]
 name = "structopt-flags"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["Luca Pizzamiglio <luca.pizzamiglio@gmail.com>"]
 readme = "README.md"
 license = "BSD-3-Clause"

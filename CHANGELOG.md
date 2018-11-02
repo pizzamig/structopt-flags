@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- HostV4Param: ipv4 address mandatory parameter
+- HostV6Param: ipv6 address mandatory parameter
+- HostParam: ip address mandatory parameter
 
 ## [0.2.0] - 2018-10-15
 ### Added
