@@ -1,6 +1,7 @@
 use super::{GetWithDefault, LogLevel};
 use log::{Level, LevelFilter};
 use std::fmt;
+use structopt::StructOpt;
 
 /// This struct provides the `--verbose` cli option
 ///

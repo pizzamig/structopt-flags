@@ -1,6 +1,7 @@
 use super::{GetWithDefault, LogLevel};
 use log::{Level, LevelFilter};
 use std::fmt;
+use structopt::StructOpt;
 
 /// This struct provides the `--log` and `-L` cli option
 ///
@@ -36,7 +37,7 @@ pub struct LogLevelOpt {
         long = "log-level",
         short = "L",
         default_value = "info",
-        raw(global = "true"),
+        raw(global = "true")
     )]
     log_level: LevelFilter,
 }
@@ -148,7 +149,7 @@ pub struct LogLevelNoDef {
         name = "loglevel",
         long = "log-level",
         short = "L",
-        raw(global = "true"),
+        raw(global = "true")
     )]
     log_level: Option<LevelFilter>,
 }
@@ -204,7 +205,7 @@ pub struct LogLevelNoDefLower {
         name = "loglevel",
         long = "log-level",
         short = "l",
-        raw(global = "true"),
+        raw(global = "true")
     )]
     log_level: Option<LevelFilter>,
 }

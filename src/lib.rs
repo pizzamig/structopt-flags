@@ -32,9 +32,6 @@
 //!     let log_level_filter = opt.verbose.get_level_filter();
 //! }
 //! ```
-extern crate log;
-#[macro_use]
-extern crate structopt;
 
 mod ip;
 mod logopt;
@@ -65,17 +62,17 @@ pub trait GetWithDefault {
     fn get_with_default(&self, default: Self::Item) -> Self::Item;
 }
 
-pub use ip::HostOpt;
-pub use ip::HostParam;
-pub use ip::HostV4Opt;
-pub use ip::HostV4Param;
-pub use ip::HostV6Opt;
-pub use ip::HostV6Param;
-pub use logopt::LogLevelNoDef;
-pub use logopt::LogLevelNoDefLower;
-pub use logopt::LogLevelOpt;
-pub use logopt::LogLevelOptLower;
-pub use verbose::QuietVerbose;
-pub use verbose::SimpleVerbose;
-pub use verbose::Verbose;
-pub use verbose::VerboseNoDef;
+pub use crate::ip::HostOpt;
+pub use crate::ip::HostParam;
+pub use crate::ip::HostV4Opt;
+pub use crate::ip::HostV4Param;
+pub use crate::ip::HostV6Opt;
+pub use crate::ip::HostV6Param;
+pub use crate::logopt::LogLevelNoDef;
+pub use crate::logopt::LogLevelNoDefLower;
+pub use crate::logopt::LogLevelOpt;
+pub use crate::logopt::LogLevelOptLower;
+pub use crate::verbose::QuietVerbose;
+pub use crate::verbose::SimpleVerbose;
+pub use crate::verbose::Verbose;
+pub use crate::verbose::VerboseNoDef;

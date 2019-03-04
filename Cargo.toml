@@ -2,6 +2,7 @@
 name = "structopt-flags"
 version = "0.2.1"
 authors = ["Luca Pizzamiglio <luca.pizzamiglio@gmail.com>"]
+edition = "2018"
 readme = "README.md"
 license = "BSD-3-Clause"
 categories = ["command-line-interface"]

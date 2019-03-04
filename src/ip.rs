@@ -1,5 +1,6 @@
 use super::GetWithDefault;
 use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
+use structopt::StructOpt;
 
 /// This struct provides the `--host` and `-H` cli option to get an IPv4 address
 ///
@@ -30,12 +31,7 @@ use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
 #[derive(StructOpt, Debug, Clone)]
 pub struct HostV4Opt {
     /// Set the host IP (Ipv4 only)
-    #[structopt(
-        name = "hostv4",
-        long = "host",
-        short = "-H",
-        raw(global = "true")
-    )]
+    #[structopt(name = "hostv4", long = "host", short = "-H", raw(global = "true"))]
     host_addr: Option<Ipv4Addr>,
 }
 
@@ -75,7 +71,7 @@ impl GetWithDefault for HostV4Opt {
 #[derive(StructOpt, Debug, Clone)]
 pub struct HostV4Param {
     /// Set the host IP (Ipv4 only)
-    #[structopt(name = "hostv4", long = "host", short = "-H",)]
+    #[structopt(name = "hostv4", long = "host", short = "-H")]
     pub host_addr: Ipv4Addr,
 }
 
@@ -108,12 +104,7 @@ pub struct HostV4Param {
 #[derive(StructOpt, Debug, Clone)]
 pub struct HostV6Opt {
     /// Set the host IP (Ipv6 only)
-    #[structopt(
-        name = "hostv6",
-        long = "host",
-        short = "-H",
-        raw(global = "true")
-    )]
+    #[structopt(name = "hostv6", long = "host", short = "-H", raw(global = "true"))]
     host_addr: Option<Ipv6Addr>,
 }
 
@@ -153,7 +144,7 @@ impl GetWithDefault for HostV6Opt {
 #[derive(StructOpt, Debug, Clone)]
 pub struct HostV6Param {
     /// Set the host IP (Ipv6 only)
-    #[structopt(name = "hostv6", long = "host", short = "-H",)]
+    #[structopt(name = "hostv6", long = "host", short = "-H")]
     pub host_addr: Ipv6Addr,
 }
 
@@ -186,12 +177,7 @@ pub struct HostV6Param {
 #[derive(StructOpt, Debug, Clone)]
 pub struct HostOpt {
     /// Set the host IP (both IpV4 and IpV6 are supported)
-    #[structopt(
-        name = "host",
-        long = "host",
-        short = "-H",
-        raw(global = "true")
-    )]
+    #[structopt(name = "host", long = "host", short = "-H", raw(global = "true"))]
     host_addr: Option<IpAddr>,
 }
 
@@ -231,6 +217,6 @@ impl GetWithDefault for HostOpt {
 #[derive(StructOpt, Debug, Clone)]
 pub struct HostParam {
     /// Set the host IP (both IpV4 and IpV6 are supported)
-    #[structopt(name = "host", long = "host", short = "-H",)]
+    #[structopt(name = "host", long = "host", short = "-H")]
     pub host_addr: IpAddr,
 }
