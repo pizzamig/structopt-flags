@@ -1,8 +1,12 @@
-use super::{GetWithDefault, LogLevel};
+use crate::{GetWithDefault, LogLevel};
 use log::{Level, LevelFilter};
 use std::fmt;
 use structopt::StructOpt;
 
+#[cfg(feature = "simplelog")]
+use crate::SetLogWithDefault;
+#[cfg(feature = "simplelog")]
+use simplelog::{Config, TermLogger};
 /// This struct provides the `--verbose` cli option
 ///
 /// By default, the log level is set to error.
@@ -56,6 +60,11 @@ impl LogLevel for Verbose {
 
     fn get_log_level(&self) -> Option<Level> {
         self.get_level_filter().to_level()
+    }
+
+    #[cfg(feature = "simplelog")]
+    fn set_log_level(&self) {
+        TermLogger::init(self.get_level_filter(), Config::default()).unwrap();
     }
 }
 
@@ -129,6 +138,12 @@ impl GetWithDefault for VerboseNoDef {
     }
 }
 
+#[cfg(feature = "simplelog")]
+impl SetLogWithDefault for VerboseNoDef {
+    fn set_with_default(&self, default: LevelFilter) {
+        TermLogger::init(self.get_with_default(default), Config::default()).unwrap();
+    }
+}
 /// This struct implements the `--verbose` and the `--quiet` cli options
 ///
 /// By default, the log level is set to warning.
@@ -208,6 +223,10 @@ impl LogLevel for QuietVerbose {
     }
     fn get_log_level(&self) -> Option<Level> {
         self.get_level_filter().to_level()
+    }
+    #[cfg(feature = "simplelog")]
+    fn set_log_level(&self) {
+        TermLogger::init(self.get_level_filter(), Config::default()).unwrap();
     }
 }
 

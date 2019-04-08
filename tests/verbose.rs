@@ -33,6 +33,40 @@ fn test_verbose_4() {
     cmd.args(&["-q"]).assert().failure();
 }
 
+//#[cfg(feature = "simplelog")]
+//#[test]
+//fn test_verbose_simplelog_1() {
+//    let mut cmd = Command::cargo_example("verbose-simplelog").unwrap();
+//    let output = cmd.unwrap();
+//    output.clone().assert().success();
+//    output.assert().stdout("");
+//}
+//
+//#[cfg(feature = "simplelog")]
+//#[test]
+//fn test_verbose_simplelog_2() {
+//    let mut cmd = Command::cargo_example("verbose").unwrap();
+//    let output = cmd.args(&["-v"]).unwrap();
+//    output.clone().assert().success();
+//    output.assert().stdout("WARN\n");
+//}
+//
+//#[cfg(feature = "simplelog")]
+//#[test]
+//fn test_verbose_simplelog_3() {
+//    let mut cmd = Command::cargo_example("verbose").unwrap();
+//    let output = cmd.args(&["-vvvvvv"]).unwrap();
+//    output.clone().assert().success();
+//    output.assert().stdout("TRACE\n");
+//}
+//
+//#[cfg(feature = "simplelog")]
+//#[test]
+//fn test_verbose_simplelog_4() {
+//    let mut cmd = Command::cargo_example("verbose").unwrap();
+//    cmd.args(&["-q"]).assert().failure();
+//}
+
 #[test]
 fn test_verbosenodef_1() {
     let mut cmd = Command::cargo_example("verbose_no_default").unwrap();

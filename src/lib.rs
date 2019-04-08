@@ -50,16 +50,27 @@ pub trait LogLevel {
     ///
     /// The log level could be None if the log has been switched off
     fn get_level_filter(&self) -> LevelFilter;
+
+    #[cfg(feature = "simplelog")]
+    /// This function will set the log level provided by the option/flag
+    fn set_log_level(&self);
 }
 
 /// This trait is designed to provide a rude form of default value for options
 /// If an option doesn't have a default value, it will implement this trait
 pub trait GetWithDefault {
     type Item;
-
     /// This function can be used to retrieve the value of the command line option
     /// taking in account the default value used as argument
     fn get_with_default(&self, default: Self::Item) -> Self::Item;
+}
+
+/// This trait is designed to provide a way to set the log level, when the option
+/// or the flag doesn't have a default level
+#[cfg(feature = "simplelog")]
+pub trait SetLogWithDefault: GetWithDefault {
+    /// This function can be used to set the loglevel
+    fn set_with_default(&self, default: LevelFilter);
 }
 
 pub use crate::ip::HostOpt;

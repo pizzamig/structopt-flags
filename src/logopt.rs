@@ -1,8 +1,12 @@
-use super::{GetWithDefault, LogLevel};
+use crate::{GetWithDefault, LogLevel};
 use log::{Level, LevelFilter};
 use std::fmt;
 use structopt::StructOpt;
 
+#[cfg(feature = "simplelog")]
+use crate::SetLogWithDefault;
+#[cfg(feature = "simplelog")]
+use simplelog::{Config, TermLogger};
 /// This struct provides the `--log` and `-L` cli option
 ///
 /// By default, the log level is set to info.
@@ -49,6 +53,11 @@ impl LogLevel for LogLevelOpt {
 
     fn get_log_level(&self) -> Option<Level> {
         self.get_level_filter().to_level()
+    }
+
+    #[cfg(feature = "simplelog")]
+    fn set_log_level(&self) {
+        TermLogger::init(self.get_level_filter(), Config::default()).unwrap();
     }
 }
 
@@ -106,6 +115,11 @@ impl LogLevel for LogLevelOptLower {
     fn get_log_level(&self) -> Option<Level> {
         self.get_level_filter().to_level()
     }
+
+    #[cfg(feature = "simplelog")]
+    fn set_log_level(&self) {
+        TermLogger::init(self.get_level_filter(), Config::default()).unwrap();
+    }
 }
 
 impl fmt::Display for LogLevelOptLower {
@@ -158,6 +172,13 @@ impl GetWithDefault for LogLevelNoDef {
     type Item = LevelFilter;
     fn get_with_default(&self, default: Self::Item) -> Self::Item {
         self.log_level.unwrap_or(default)
+    }
+}
+
+#[cfg(feature = "simplelog")]
+impl SetLogWithDefault for LogLevelNoDef {
+    fn set_with_default(&self, default: LevelFilter) {
+        TermLogger::init(self.get_with_default(default), Config::default()).unwrap();
     }
 }
 
@@ -214,6 +235,13 @@ impl GetWithDefault for LogLevelNoDefLower {
     type Item = LevelFilter;
     fn get_with_default(&self, default: Self::Item) -> Self::Item {
         self.log_level.unwrap_or(default)
+    }
+}
+
+#[cfg(feature = "simplelog")]
+impl SetLogWithDefault for LogLevelNoDefLower {
+    fn set_with_default(&self, default: LevelFilter) {
+        TermLogger::init(self.get_with_default(default), Config::default()).unwrap();
     }
 }
 

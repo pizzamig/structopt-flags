@@ -15,9 +15,13 @@ build = "build.rs"
 travis-ci = { repository = "pizzamig/structopt-flags" }
 maintenance = { status = "actively-developed" }
 
+[features]
+default = []
+
 [dependencies]
 structopt = "0.2"
 log = "0.4"
+simplelog = { version = "0.5", optional = true }
 
 [build-dependencies]
 skeptic = "0.13"
@@ -26,3 +30,8 @@ skeptic = "0.13"
 assert_cmd = "0.10"
 failure = "0.1"
 skeptic = "0.13"
+
+[[example]]
+name = "verbose-simplelog"
+required-features = ["simplelog"]
+
