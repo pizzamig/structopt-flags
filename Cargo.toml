@@ -27,11 +27,13 @@ simplelog = { version = "0.5", optional = true }
 skeptic = "0.13"
 
 [dev-dependencies]
-assert_cmd = "0.10"
+assert_cmd = "0.11"
+escargot = { git = "https://github.com/pizzamig/escargot", branch = "fix-features" }
 failure = "0.1"
 skeptic = "0.13"
+predicates = "1"
 
 [[example]]
-name = "verbose-simplelog"
+name = "verbose_simplelog"
 required-features = ["simplelog"]
 
