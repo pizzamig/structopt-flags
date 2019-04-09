@@ -37,3 +37,14 @@ predicates = "1"
 name = "verbose_simplelog"
 required-features = ["simplelog"]
 
+[[example]]
+name = "quiet_verbose_simplelog"
+required-features = ["simplelog"]
+
+[[example]]
+name = "logopt_simplelog"
+required-features = ["simplelog"]
+
+[[example]]
+name = "verbose_no_default_simplelog"
+required-features = ["simplelog"]

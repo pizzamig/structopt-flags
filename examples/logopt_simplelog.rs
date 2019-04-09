@@ -1,27 +1,27 @@
 #[allow(unused_imports)]
 #[macro_use]
 extern crate structopt;
-extern crate failure;
 extern crate structopt_flags;
 #[macro_use]
 extern crate log;
 
-use failure::Error;
 use structopt::StructOpt;
 #[cfg(feature = "simplelog")]
 use structopt_flags::LogLevel;
 
 #[derive(Debug, StructOpt)]
-#[structopt(name = "verbose", about = "An example using verbose flag")]
+#[structopt(
+    name = "log_level_opt",
+    about = "An example using the LogLevelOpt option"
+)]
 struct Opt {
     #[structopt(flatten)]
-    verbose: structopt_flags::Verbose,
+    log_level: structopt_flags::LogLevelOpt,
 }
 
-fn main() -> Result<(), Error> {
+fn main() {
     let opt = Opt::from_args();
     #[cfg(feature = "simplelog")]
-    opt.verbose.set_log_level();
-    trace!("{}", opt.verbose);
-    Ok(())
+    opt.log_level.set_log_level();
+    info!("{}", opt.log_level);
 }

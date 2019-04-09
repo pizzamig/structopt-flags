@@ -4,7 +4,6 @@ extern crate predicates;
 
 use assert_cmd::prelude::*;
 use escargot::CargoBuild;
-//use predicates::prelude::*;
 
 #[test]
 fn test_verbose_1() {
@@ -142,6 +141,48 @@ fn test_verbosenodef_4() {
     cmd.args(&["-q"]).assert().failure();
 }
 
+#[cfg(feature = "simplelog")]
+#[test]
+fn test_verbosenodef_simplelog_1() {
+    let example = CargoBuild::new()
+        .example("verbose_no_default_simplelog")
+        .features("simplelog")
+        .run()
+        .unwrap();
+    let mut cmd = example.command();
+    let output = cmd.unwrap();
+    output.clone().assert().success();
+    output.assert().stdout("");
+}
+
+#[cfg(feature = "simplelog")]
+#[test]
+fn test_verbosenodef_simplelog_2() {
+    let example = CargoBuild::new()
+        .example("verbose_no_default_simplelog")
+        .features("simplelog")
+        .run()
+        .unwrap();
+    let mut cmd = example.command();
+    let output = cmd.args(&["-vvvvvvvvv"]).unwrap();
+    output.clone().assert().success();
+    output.assert().stdout(predicates::str::ends_with(
+        "verbose_no_default_simplelog: [examples/verbose_no_default_simplelog.rs:30] TRACE\n",
+    ));
+}
+
+#[cfg(feature = "simplelog")]
+#[test]
+fn test_verbosenodef_simplelog_3() {
+    let example = CargoBuild::new()
+        .example("verbose_no_default_simplelog")
+        .features("simplelog")
+        .run()
+        .unwrap();
+    let mut cmd = example.command();
+    cmd.args(&["-q"]).assert().failure();
+}
+
 #[test]
 fn test_quietverbose_1() {
     let example = CargoBuild::new().example("quiet_verbose").run().unwrap();
@@ -172,6 +213,62 @@ fn test_quietverbose_3() {
 #[test]
 fn test_quietverbose_4() {
     let example = CargoBuild::new().example("quiet_verbose").run().unwrap();
+    let mut cmd = example.command();
+    cmd.args(&["-q", "-v"]).assert().failure();
+}
+
+#[cfg(feature = "simplelog")]
+#[test]
+fn test_quietverbose_simplelog_1() {
+    let example = CargoBuild::new()
+        .example("quiet_verbose_simplelog")
+        .features("simplelog")
+        .run()
+        .unwrap();
+    let mut cmd = example.command();
+    let output = cmd.unwrap();
+    output.clone().assert().success();
+    output.assert().stdout("");
+}
+
+#[cfg(feature = "simplelog")]
+#[test]
+fn test_quietverbose_simplelog_2() {
+    let example = CargoBuild::new()
+        .example("quiet_verbose_simplelog")
+        .features("simplelog")
+        .run()
+        .unwrap();
+    let mut cmd = example.command();
+    let output = cmd.args(&["-vv"]).unwrap();
+    output.clone().assert().success();
+    output.assert().stdout(predicates::str::ends_with(
+        "quiet_verbose_simplelog: DEBUG\n",
+    ));
+}
+
+#[cfg(feature = "simplelog")]
+#[test]
+fn test_quietverbose_simplelog_3() {
+    let example = CargoBuild::new()
+        .example("quiet_verbose_simplelog")
+        .features("simplelog")
+        .run()
+        .unwrap();
+    let mut cmd = example.command();
+    let output = cmd.args(&["-qq"]).unwrap();
+    output.clone().assert().success();
+    output.assert().stdout("");
+}
+
+#[cfg(feature = "simplelog")]
+#[test]
+fn test_quietverbose_simplelog_4() {
+    let example = CargoBuild::new()
+        .example("quiet_verbose_simplelog")
+        .features("simplelog")
+        .run()
+        .unwrap();
     let mut cmd = example.command();
     cmd.args(&["-q", "-v"]).assert().failure();
 }

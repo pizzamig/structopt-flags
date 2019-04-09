@@ -12,16 +12,16 @@ use structopt::StructOpt;
 use structopt_flags::LogLevel;
 
 #[derive(Debug, StructOpt)]
-#[structopt(name = "verbose", about = "An example using verbose flag")]
+#[structopt(name = "quiet_verbose", about = "An example using quite_verbose flag")]
 struct Opt {
     #[structopt(flatten)]
-    verbose: structopt_flags::Verbose,
+    quiet_verbose: structopt_flags::QuietVerbose,
 }
 
 fn main() -> Result<(), Error> {
     let opt = Opt::from_args();
     #[cfg(feature = "simplelog")]
-    opt.verbose.set_log_level();
-    trace!("{}", opt.verbose);
+    opt.quiet_verbose.set_log_level();
+    debug!("{}", opt.quiet_verbose);
     Ok(())
 }
