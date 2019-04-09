@@ -28,7 +28,7 @@ skeptic = "0.13"
 
 [dev-dependencies]
 assert_cmd = "0.11"
-escargot = { git = "https://github.com/pizzamig/escargot", branch = "fix-features" }
+escargot = "0.5"
 failure = "0.1"
 skeptic = "0.13"
 predicates = "1"

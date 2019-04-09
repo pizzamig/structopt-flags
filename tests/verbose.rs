@@ -4,7 +4,7 @@ extern crate predicates;
 
 use assert_cmd::prelude::*;
 use escargot::CargoBuild;
-use predicates::prelude::*;
+//use predicates::prelude::*;
 
 #[test]
 fn test_verbose_1() {
