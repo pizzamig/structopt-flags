@@ -117,8 +117,8 @@ pub struct VerboseNoDef {
 
 impl GetWithDefault for VerboseNoDef {
     type Item = LevelFilter;
-    fn get_with_default(&self, default: Self::Item) -> Self::Item {
-        let default_value: i8 = match default {
+    fn get_with_default<T: Into<Self::Item>>(&self, default: T) -> Self::Item {
+        let default_value: i8 = match default.into() {
             LevelFilter::Off => -1,
             LevelFilter::Error => 0,
             LevelFilter::Warn => 1,
@@ -137,7 +137,6 @@ impl GetWithDefault for VerboseNoDef {
         }
     }
 }
-
 #[cfg(feature = "simplelog")]
 impl SetLogWithDefault for VerboseNoDef {
     fn set_with_default(&self, default: LevelFilter) {

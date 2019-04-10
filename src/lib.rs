@@ -33,6 +33,7 @@
 //! }
 //! ```
 
+mod config;
 mod ip;
 mod logopt;
 mod verbose;
@@ -62,9 +63,8 @@ pub trait GetWithDefault {
     type Item;
     /// This function can be used to retrieve the value of the command line option
     /// taking in account the default value used as argument
-    fn get_with_default(&self, default: Self::Item) -> Self::Item;
+    fn get_with_default<T: Into<Self::Item>>(&self, default: T) -> Self::Item;
 }
-
 /// This trait is designed to provide a way to set the log level, when the option
 /// or the flag doesn't have a default level
 #[cfg(feature = "simplelog")]
@@ -73,6 +73,8 @@ pub trait SetLogWithDefault: GetWithDefault {
     fn set_with_default(&self, default: LevelFilter);
 }
 
+pub use crate::config::ConfigFile;
+pub use crate::config::ConfigFileNoDef;
 pub use crate::ip::HostOpt;
 pub use crate::ip::HostParam;
 pub use crate::ip::HostV4Opt;

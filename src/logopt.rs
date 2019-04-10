@@ -170,8 +170,8 @@ pub struct LogLevelNoDef {
 
 impl GetWithDefault for LogLevelNoDef {
     type Item = LevelFilter;
-    fn get_with_default(&self, default: Self::Item) -> Self::Item {
-        self.log_level.unwrap_or(default)
+    fn get_with_default<T: Into<Self::Item>>(&self, default: T) -> Self::Item {
+        self.log_level.unwrap_or(default.into())
     }
 }
 
@@ -233,8 +233,8 @@ pub struct LogLevelNoDefLower {
 
 impl GetWithDefault for LogLevelNoDefLower {
     type Item = LevelFilter;
-    fn get_with_default(&self, default: Self::Item) -> Self::Item {
-        self.log_level.unwrap_or(default)
+    fn get_with_default<T: Into<Self::Item>>(&self, default: T) -> Self::Item {
+        self.log_level.unwrap_or(default.into())
     }
 }
 

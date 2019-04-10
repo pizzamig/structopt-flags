@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - features: add simplelog as an optional feature
+- ConfigFile and ConfigFileNoDef: options to provide a configuration file
+
+### Changed
+- Make the GetWithDefault trait more idiomatic, using the Into trait
 
 ## [0.2.1] - 2018-11-02
 ### Added

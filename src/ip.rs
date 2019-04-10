@@ -37,8 +37,8 @@ pub struct HostV4Opt {
 
 impl GetWithDefault for HostV4Opt {
     type Item = Ipv4Addr;
-    fn get_with_default(&self, default: Self::Item) -> Self::Item {
-        self.host_addr.unwrap_or(default)
+    fn get_with_default<T: Into<Self::Item>>(&self, default: T) -> Self::Item {
+        self.host_addr.unwrap_or(default.into())
     }
 }
 
@@ -110,8 +110,8 @@ pub struct HostV6Opt {
 
 impl GetWithDefault for HostV6Opt {
     type Item = Ipv6Addr;
-    fn get_with_default(&self, default: Self::Item) -> Self::Item {
-        self.host_addr.unwrap_or(default)
+    fn get_with_default<T: Into<Self::Item>>(&self, default: T) -> Self::Item {
+        self.host_addr.unwrap_or(default.into())
     }
 }
 
@@ -183,8 +183,8 @@ pub struct HostOpt {
 
 impl GetWithDefault for HostOpt {
     type Item = IpAddr;
-    fn get_with_default(&self, default: Self::Item) -> Self::Item {
-        self.host_addr.unwrap_or(default)
+    fn get_with_default<T: Into<Self::Item>>(&self, default: T) -> Self::Item {
+        self.host_addr.unwrap_or(default.into())
     }
 }
 
