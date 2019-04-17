@@ -34,6 +34,7 @@
 //! ```
 
 mod config;
+mod force;
 mod ip;
 mod logopt;
 mod verbose;
@@ -75,6 +76,7 @@ pub trait SetLogWithDefault: GetWithDefault {
 
 pub use crate::config::ConfigFile;
 pub use crate::config::ConfigFileNoDef;
+pub use crate::force::ForceFlag;
 pub use crate::ip::HostOpt;
 pub use crate::ip::HostParam;
 pub use crate::ip::HostV4Opt;
