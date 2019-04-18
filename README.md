@@ -12,7 +12,7 @@ Add the crate to your project, adding this in `Cargo.toml`:
 
 ```toml
 [dependencies]
-structopt-flags = "0.2"
+structopt-flags = "0.3"
 ```
 
 In your code, you can use one or more flags provided by this crate.
@@ -43,6 +43,15 @@ fn main() -> Result<(), Error> {
 }
 ```
 
+## `simplelog` Feature
+
+A non-default feature added in version 0.3 is an API to automatically configure `simplelog` depending on you log or verbosity level.
+To use this feature, add in your `Cargo.toml`
+
+```toml
+[dependencies]
+structopt-flags = { version = "0.3", features = ["simplelog"] }
+```
 
 ## License
 

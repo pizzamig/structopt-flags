@@ -1,6 +1,6 @@
 [package]
 name = "structopt-flags"
-version = "0.3.0"
+version = "0.3.1"
 authors = ["Luca Pizzamiglio <luca.pizzamiglio@gmail.com>"]
 edition = "2018"
 readme = "README.md"
@@ -10,6 +10,9 @@ keywords = ["clap","structopt","cli","flags"]
 repository = "https://github.com/pizzamig/structopt-flags"
 description = "Collection of reusable flags for StructOpt"
 build = "build.rs"
+
+[package.metadata.docs.rs]
+all-features = true
 
 [badges]
 travis-ci = { repository = "pizzamig/structopt-flags" }
