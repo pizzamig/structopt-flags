@@ -159,10 +159,10 @@ impl SetLogWithDefault for VerboseNoDef {
 /// use structopt_flags::LogLevel; // to access get_log_level
 ///
 /// #[derive(Debug, StructOpt)]
-/// #[structopt(name = "verbose", about = "An example using verbose flag")]
+/// #[structopt(name = "quietverbose", about = "An example using quietverbose flag")]
 /// struct Opt {
 ///     #[structopt(flatten)]
-///     verbose: structopt_flags::Verbose,
+///     verbose: structopt_flags::QuietVerbose,
 /// }
 ///
 /// fn main() {
@@ -187,7 +187,7 @@ pub struct QuietVerbose {
 
     /// Decrease the output's verbosity level
     /// Used once, it will set error log level.
-    /// Used twice, will slient te log completely
+    /// Used twice, will slient the log completely
     #[structopt(
         name = "quietquiet",
         long = "quiet",
@@ -242,6 +242,7 @@ impl fmt::Display for QuietVerbose {
 ///
 /// ```rust
 /// extern crate structopt_flags;
+///
 /// #[macro_use]
 /// extern crate structopt;
 ///
