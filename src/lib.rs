@@ -39,23 +39,33 @@ mod ip;
 mod logopt;
 mod verbose;
 
-pub use log::{Level, LevelFilter};
-/// This trait is designed to provide a log level compatible with the Log crates
-/// Options or flags that can provide a log level, will implement this trait
-pub trait LogLevel {
-    /// Return the log level.
-    ///
-    /// The log level could be None if the log has been switched off
-    fn get_log_level(&self) -> Option<Level>;
+#[cfg(feature = "simplelog")]
+use simplelog::{Config, TermLogger};
 
+pub use log::{Level, LevelFilter};
+/// This trait is designed to provide a log level filter, compatible with the Log crates, derived
+/// from an option or a flag. Options that can induce a log level, can implement this trait
+///
+/// If the simplelog features is configured, the set_log_level() function will provide an easy way
+/// to set the log level to the TermLogger
+pub trait LogLevel {
     /// Return the level filter.
     ///
     /// The log level could be None if the log has been switched off
     fn get_level_filter(&self) -> LevelFilter;
 
+    /// Return the log level.
+    ///
+    /// The log level could be None if the log has been switched off
+    fn get_log_level(&self) -> Option<Level> {
+        self.get_level_filter().to_level()
+    }
+
     #[cfg(feature = "simplelog")]
     /// This function will set the log level provided by the option/flag
-    fn set_log_level(&self);
+    fn set_log_level(&self) {
+        TermLogger::init(self.get_level_filter(), Config::default()).unwrap();
+    }
 }
 
 /// This trait is designed to provide a rude form of default value for options

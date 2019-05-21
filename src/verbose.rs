@@ -1,5 +1,5 @@
 use crate::{GetWithDefault, LogLevel};
-use log::{Level, LevelFilter};
+use log::LevelFilter;
 use std::fmt;
 use structopt::StructOpt;
 
@@ -56,15 +56,6 @@ impl LogLevel for Verbose {
             3 => LevelFilter::Debug,
             _ => LevelFilter::Trace,
         }
-    }
-
-    fn get_log_level(&self) -> Option<Level> {
-        self.get_level_filter().to_level()
-    }
-
-    #[cfg(feature = "simplelog")]
-    fn set_log_level(&self) {
-        TermLogger::init(self.get_level_filter(), Config::default()).unwrap();
     }
 }
 
@@ -219,13 +210,6 @@ impl LogLevel for QuietVerbose {
             2 => LevelFilter::Debug,
             _ => LevelFilter::Trace,
         }
-    }
-    fn get_log_level(&self) -> Option<Level> {
-        self.get_level_filter().to_level()
-    }
-    #[cfg(feature = "simplelog")]
-    fn set_log_level(&self) {
-        TermLogger::init(self.get_level_filter(), Config::default()).unwrap();
     }
 }
 

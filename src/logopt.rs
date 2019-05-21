@@ -1,5 +1,5 @@
 use crate::{GetWithDefault, LogLevel};
-use log::{Level, LevelFilter};
+use log::LevelFilter;
 use std::fmt;
 use structopt::StructOpt;
 
@@ -49,15 +49,6 @@ pub struct LogLevelOpt {
 impl LogLevel for LogLevelOpt {
     fn get_level_filter(&self) -> LevelFilter {
         self.log_level
-    }
-
-    fn get_log_level(&self) -> Option<Level> {
-        self.get_level_filter().to_level()
-    }
-
-    #[cfg(feature = "simplelog")]
-    fn set_log_level(&self) {
-        TermLogger::init(self.get_level_filter(), Config::default()).unwrap();
     }
 }
 
@@ -110,15 +101,6 @@ pub struct LogLevelOptLower {
 impl LogLevel for LogLevelOptLower {
     fn get_level_filter(&self) -> LevelFilter {
         self.log_level
-    }
-
-    fn get_log_level(&self) -> Option<Level> {
-        self.get_level_filter().to_level()
-    }
-
-    #[cfg(feature = "simplelog")]
-    fn set_log_level(&self) {
-        TermLogger::init(self.get_level_filter(), Config::default()).unwrap();
     }
 }
 
