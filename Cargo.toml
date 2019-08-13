@@ -1,6 +1,6 @@
 [package]
 name = "structopt-flags"
-version = "0.3.2"
+version = "0.3.3"
 authors = ["Luca Pizzamiglio <luca.pizzamiglio@gmail.com>"]
 edition = "2018"
 readme = "README.md"
