@@ -10,10 +10,7 @@ use structopt::StructOpt;
 use structopt_flags::GetWithDefault;
 
 #[derive(Debug, StructOpt)]
-#[structopt(
-    name = "hostipv4",
-    about = "An example using HostV4Opt option"
-)]
+#[structopt(name = "hostipv4", about = "An example using HostV4Opt option")]
 struct Opt {
     #[structopt(flatten)]
     hostipv4: structopt_flags::HostV4Opt,

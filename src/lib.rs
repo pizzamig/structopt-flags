@@ -40,7 +40,7 @@ mod logopt;
 mod verbose;
 
 #[cfg(feature = "simplelog")]
-use simplelog::{Config, TermLogger};
+use simplelog::{Config, TermLogger, TerminalMode};
 
 pub use log::{Level, LevelFilter};
 /// This trait is designed to provide a log level filter, compatible with the Log crates, derived
@@ -64,7 +64,12 @@ pub trait LogLevel {
     #[cfg(feature = "simplelog")]
     /// This function will set the log level provided by the option/flag
     fn set_log_level(&self) {
-        TermLogger::init(self.get_level_filter(), Config::default()).unwrap_or(());
+        TermLogger::init(
+            self.get_level_filter(),
+            Config::default(),
+            TerminalMode::Mixed,
+        )
+        .unwrap_or(());
     }
 }
 

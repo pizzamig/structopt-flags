@@ -8,10 +8,7 @@ use failure::Error;
 use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
-#[structopt(
-    name = "hostip_param",
-    about = "An example using HostParam option"
-)]
+#[structopt(name = "hostip_param", about = "An example using HostParam option")]
 struct Opt {
     #[structopt(flatten)]
     hostip: structopt_flags::HostParam,

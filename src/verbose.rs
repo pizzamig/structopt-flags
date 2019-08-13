@@ -6,7 +6,7 @@ use structopt::StructOpt;
 #[cfg(feature = "simplelog")]
 use crate::SetLogWithDefault;
 #[cfg(feature = "simplelog")]
-use simplelog::{Config, TermLogger};
+use simplelog::{Config, TermLogger, TerminalMode};
 /// This struct provides the `--verbose` cli option
 ///
 /// By default, the log level is set to error.
@@ -131,7 +131,12 @@ impl GetWithDefault for VerboseNoDef {
 #[cfg(feature = "simplelog")]
 impl SetLogWithDefault for VerboseNoDef {
     fn set_with_default(&self, default: LevelFilter) {
-        TermLogger::init(self.get_with_default(default), Config::default()).unwrap_or(());
+        TermLogger::init(
+            self.get_with_default(default),
+            Config::default(),
+            TerminalMode::Mixed,
+        )
+        .unwrap_or(());
     }
 }
 /// This struct implements the `--verbose` and the `--quiet` cli options

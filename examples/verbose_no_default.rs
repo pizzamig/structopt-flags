@@ -13,10 +13,7 @@ use structopt::StructOpt;
 use structopt_flags::GetWithDefault;
 
 #[derive(Debug, StructOpt)]
-#[structopt(
-    name = "verbosenodef",
-    about = "An example using verbosenodef flag"
-)]
+#[structopt(name = "verbosenodef", about = "An example using verbosenodef flag")]
 struct Opt {
     #[structopt(flatten)]
     verbose: structopt_flags::VerboseNoDef,

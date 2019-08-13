@@ -8,10 +8,7 @@ use failure::Error;
 use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
-#[structopt(
-    name = "quiet_verbose",
-    about = "An example using quite_verbose flag"
-)]
+#[structopt(name = "quiet_verbose", about = "An example using quite_verbose flag")]
 struct Opt {
     #[structopt(flatten)]
     quiet_verbose: structopt_flags::QuietVerbose,
