@@ -160,7 +160,7 @@ impl GetWithDefault for LogLevelNoDef {
 #[cfg(feature = "simplelog")]
 impl SetLogWithDefault for LogLevelNoDef {
     fn set_with_default(&self, default: LevelFilter) {
-        TermLogger::init(self.get_with_default(default), Config::default()).unwrap();
+        TermLogger::init(self.get_with_default(default), Config::default()).unwrap_or(());
     }
 }
 
@@ -223,7 +223,7 @@ impl GetWithDefault for LogLevelNoDefLower {
 #[cfg(feature = "simplelog")]
 impl SetLogWithDefault for LogLevelNoDefLower {
     fn set_with_default(&self, default: LevelFilter) {
-        TermLogger::init(self.get_with_default(default), Config::default()).unwrap();
+        TermLogger::init(self.get_with_default(default), Config::default()).unwrap_or(());
     }
 }
 

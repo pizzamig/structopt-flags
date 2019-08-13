@@ -64,7 +64,7 @@ pub trait LogLevel {
     #[cfg(feature = "simplelog")]
     /// This function will set the log level provided by the option/flag
     fn set_log_level(&self) {
-        TermLogger::init(self.get_level_filter(), Config::default()).unwrap();
+        TermLogger::init(self.get_level_filter(), Config::default()).unwrap_or(());
     }
 }
 

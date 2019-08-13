@@ -131,7 +131,7 @@ impl GetWithDefault for VerboseNoDef {
 #[cfg(feature = "simplelog")]
 impl SetLogWithDefault for VerboseNoDef {
     fn set_with_default(&self, default: LevelFilter) {
-        TermLogger::init(self.get_with_default(default), Config::default()).unwrap();
+        TermLogger::init(self.get_with_default(default), Config::default()).unwrap_or(());
     }
 }
 /// This struct implements the `--verbose` and the `--quiet` cli options
