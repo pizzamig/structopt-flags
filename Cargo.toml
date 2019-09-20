@@ -22,9 +22,9 @@ maintenance = { status = "actively-developed" }
 default = []
 
 [dependencies]
-structopt = "0.2"
+structopt = "0.3"
 log = "0.4"
-simplelog = { version = "0.6", optional = true }
+simplelog = { version = "0.7", optional = true }
 
 [build-dependencies]
 skeptic = "0.13"
