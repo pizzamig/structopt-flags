@@ -41,7 +41,7 @@ pub struct LogLevelOpt {
         long = "log-level",
         short = "L",
         default_value = "info",
-        raw(global = "true")
+        global = true
     )]
     log_level: LevelFilter,
 }
@@ -92,7 +92,7 @@ pub struct LogLevelOptLower {
         long = "log-level",
         short = "l",
         default_value = "info",
-        raw(global = "true"),
+        global = true,
         conflicts_with = "loglevel"
     )]
     log_level: LevelFilter,
@@ -145,7 +145,7 @@ pub struct LogLevelNoDef {
         name = "loglevel",
         long = "log-level",
         short = "L",
-        raw(global = "true")
+        global = true
     )]
     log_level: Option<LevelFilter>,
 }
@@ -213,7 +213,7 @@ pub struct LogLevelNoDefLower {
         name = "loglevel",
         long = "log-level",
         short = "l",
-        raw(global = "true")
+        global = true
     )]
     log_level: Option<LevelFilter>,
 }
