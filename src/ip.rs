@@ -31,7 +31,7 @@ use structopt::StructOpt;
 #[derive(StructOpt, Debug, Clone)]
 pub struct HostV4Opt {
     /// Set the host IP (Ipv4 only)
-    #[structopt(name = "hostv4", long = "host", short = "-H", raw(global = "true"))]
+    #[structopt(name = "hostv4", long = "host", short = "-H", global = true)]
     host_addr: Option<Ipv4Addr>,
 }
 
@@ -104,7 +104,7 @@ pub struct HostV4Param {
 #[derive(StructOpt, Debug, Clone)]
 pub struct HostV6Opt {
     /// Set the host IP (Ipv6 only)
-    #[structopt(name = "hostv6", long = "host", short = "-H", raw(global = "true"))]
+    #[structopt(name = "hostv6", long = "host", short = "-H", global = true)]
     host_addr: Option<Ipv6Addr>,
 }
 
@@ -177,7 +177,7 @@ pub struct HostV6Param {
 #[derive(StructOpt, Debug, Clone)]
 pub struct HostOpt {
     /// Set the host IP (both IpV4 and IpV6 are supported)
-    #[structopt(name = "host", long = "host", short = "-H", raw(global = "true"))]
+    #[structopt(name = "host", long = "host", short = "-H", global = true)]
     host_addr: Option<IpAddr>,
 }
 

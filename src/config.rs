@@ -85,7 +85,7 @@ pub struct ConfigFileNoDef {
         long = "config",
         short = "c",
         parse(from_os_str),
-        raw(global = "true")
+        global = true
     )]
     filename: Option<PathBuf>,
 }

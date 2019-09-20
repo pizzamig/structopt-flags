@@ -42,7 +42,7 @@ pub struct Verbose {
         long = "verbose",
         short = "v",
         parse(from_occurrences),
-        raw(global = "true")
+        global = true
     )]
     verbosity_level: u8,
 }
@@ -101,7 +101,7 @@ pub struct VerboseNoDef {
         long = "verbose",
         short = "v",
         parse(from_occurrences),
-        raw(global = "true")
+        global = true
     )]
     verbosity_level: u8,
 }
@@ -177,7 +177,7 @@ pub struct QuietVerbose {
         short = "v",
         parse(from_occurrences),
         conflicts_with = "quietquiet",
-        raw(global = "true")
+        global = true
     )]
     verbosity_level: u8,
 
@@ -190,7 +190,7 @@ pub struct QuietVerbose {
         short = "q",
         parse(from_occurrences),
         conflicts_with = "quietverbose",
-        raw(global = "true")
+        global = true
     )]
     quiet_level: u8,
 }
@@ -261,7 +261,7 @@ pub struct SimpleVerbose {
         name = "simpleverbose",
         long = "verbose",
         short = "v",
-        raw(global = "true")
+        global = true
     )]
     pub verbose: bool,
 }

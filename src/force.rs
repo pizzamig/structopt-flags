@@ -31,7 +31,7 @@ use structopt::StructOpt;
 #[derive(StructOpt, Debug, Clone)]
 pub struct ForceFlag {
     /// Force the operation
-    #[structopt(name = "forceflag", long = "force", short = "f", raw(global = "true"))]
+    #[structopt(name = "forceflag", long = "force", short = "f", global = true)]
     pub force: bool,
 }
 
