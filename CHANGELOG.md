@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.3.5] - 2019-09-22
+### Changed
+- structopt: update to 0.3
+
 ## [0.3.4] - 2019-08-14
 ### Changed
 - simplelog: update to 0.6
