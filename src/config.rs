@@ -3,31 +3,6 @@ use std::fmt;
 use std::path::PathBuf;
 use structopt::StructOpt;
 
-/// This struct provides the `--config_file` cli option
-///
-/// The option is mandatory and require a filename
-///
-/// ```should_panic
-/// extern crate structopt_flags;
-/// #[macro_use]
-/// extern crate structopt;
-///
-/// use structopt::StructOpt;
-/// use structopt_flags::ConfigFile; // to access get_log_level
-///
-/// #[derive(Debug, StructOpt)]
-/// #[structopt(name = "config-file", about = "An example using config_file option")]
-/// struct Opt {
-///     #[structopt(flatten)]
-///     config: structopt_flags::ConfigFile,
-/// }
-///
-/// fn main() {
-///     let opt = Opt::from_args();
-///     let config_file = opt.config.get_filename();
-///     // use the config file
-/// }
-/// ```
 #[derive(StructOpt, Debug, Clone)]
 pub struct ConfigFile {
     /// Set the configuration file
@@ -51,32 +26,6 @@ impl fmt::Display for ConfigFile {
     }
 }
 
-/// This struct provides the `--config_file` cli option
-///
-/// The option is no mandatory, but a default value can be provided wit the get_with_default()
-///
-/// ```rust
-/// extern crate structopt_flags;
-/// #[macro_use]
-/// extern crate structopt;
-///
-/// use structopt::StructOpt;
-/// use structopt_flags::GetWithDefault; // to access get_log_level
-/// use std::path::PathBuf;
-///
-/// #[derive(Debug, StructOpt)]
-/// #[structopt(name = "config-file", about = "An example using config_file option")]
-/// struct Opt {
-///     #[structopt(flatten)]
-///     config: structopt_flags::ConfigFileNoDef,
-/// }
-///
-/// fn main() {
-///     let opt = Opt::from_args();
-///     let config_file = opt.config.get_with_default("config-file.toml");
-///     // use the config file
-/// }
-/// ```
 #[derive(StructOpt, Debug, Clone)]
 pub struct ConfigFileNoDef {
     /// Set the configuration file

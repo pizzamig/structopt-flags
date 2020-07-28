@@ -7,33 +7,8 @@ use structopt::StructOpt;
 use crate::SetLogWithDefault;
 #[cfg(feature = "simplelog")]
 use simplelog::{Config, TermLogger, TerminalMode};
-/// This struct provides the `--verbose` cli option
-///
-/// By default, the log level is set to error.
-/// Multiple occurrences, will increase the verbosity level up to 4.
-///
-/// ```rust
-/// extern crate structopt_flags;
-/// #[macro_use]
-/// extern crate structopt;
-///
-/// use structopt::StructOpt;
-/// use structopt_flags::LogLevel; // to access get_log_level
-///
-/// #[derive(Debug, StructOpt)]
-/// #[structopt(name = "verbose", about = "An example using verbose flag")]
-/// struct Opt {
-///     #[structopt(flatten)]
-///     verbose: structopt_flags::Verbose,
-/// }
-///
-/// fn main() {
-///     let opt = Opt::from_args();
-///     let filter_level = opt.verbose.get_level_filter();
-///     // set log level
-/// }
-/// ```
 #[derive(StructOpt, Debug, Clone)]
+
 pub struct Verbose {
     /// Increase the output's verbosity level (default:info)
     /// Pass many times to increase verbosity level, up to 4.
@@ -65,33 +40,6 @@ impl fmt::Display for Verbose {
     }
 }
 
-/// This struct provides the `--verbose` cli option, without a predefined default
-///
-/// Multiple occurrences, will increase the verbosity level
-///
-/// ```rust
-/// extern crate log;
-/// extern crate structopt_flags;
-/// #[macro_use]
-/// extern crate structopt;
-///
-/// use log::LevelFilter;
-/// use structopt::StructOpt;
-/// use structopt_flags::GetWithDefault; // to access get_log_level
-///
-/// #[derive(Debug, StructOpt)]
-/// #[structopt( name = "verbose_no_def", about = "An example using verbose flag with no predefined default")]
-/// struct Opt {
-///     #[structopt(flatten)]
-///     verbose: structopt_flags::VerboseNoDef,
-/// }
-///
-/// fn main() {
-///     let opt = Opt::from_args();
-///     let filter_level = opt.verbose.get_with_default(LevelFilter::Off);
-///     // set log level
-/// }
-/// ```
 #[derive(StructOpt, Debug, Clone)]
 pub struct VerboseNoDef {
     /// Increase the output's verbosity level
@@ -139,34 +87,6 @@ impl SetLogWithDefault for VerboseNoDef {
         .unwrap_or(());
     }
 }
-/// This struct implements the `--verbose` and the `--quiet` cli options
-///
-/// By default, the log level is set to warning.
-/// Multiple occurrences of `-v`, will increase the verbosity level up to 3.
-/// The flag `-q` is used to decrease verbosity.
-/// Using it twice, will silent the log.
-///
-/// ```rust
-/// extern crate structopt_flags;
-/// #[macro_use]
-/// extern crate structopt;
-///
-/// use structopt::StructOpt;
-/// use structopt_flags::LogLevel; // to access get_log_level
-///
-/// #[derive(Debug, StructOpt)]
-/// #[structopt(name = "quietverbose", about = "An example using quietverbose flag")]
-/// struct Opt {
-///     #[structopt(flatten)]
-///     verbose: structopt_flags::QuietVerbose,
-/// }
-///
-/// fn main() {
-///     let opt = Opt::from_args();
-///     let filter_level = opt.verbose.get_level_filter();
-///     // set log level
-/// }
-/// ```
 #[derive(StructOpt, Debug, Clone)]
 pub struct QuietVerbose {
     /// Increase the output's verbosity level
@@ -224,45 +144,11 @@ impl fmt::Display for QuietVerbose {
     }
 }
 
-/// This struct implements the `--verbose` cli option as a boolean flag
-///
-/// By default, the log level is set to warning.
-/// Multiple occurrences of `-v` are not supported
-///
-/// ```rust
-/// extern crate structopt_flags;
-///
-/// #[macro_use]
-/// extern crate structopt;
-///
-/// use structopt::StructOpt;
-///
-/// #[derive(Debug, StructOpt)]
-/// #[structopt(name = "verbose", about = "An example using verbose flag")]
-/// struct Opt {
-///     #[structopt(flatten)]
-///     verbose: structopt_flags::SimpleVerbose,
-/// }
-///
-/// fn main() {
-///     let opt = Opt::from_args();
-///     if opt.verbose.verbose {
-///         println!("Verbose output enabled");
-///     } else {
-///         println!("No verbose output");
-///     }
-/// }
-/// ```
 #[derive(StructOpt, Debug, Clone)]
 pub struct SimpleVerbose {
     /// Enable the verbose output
     /// No multiple occurrences are supported
-    #[structopt(
-        name = "simpleverbose",
-        long = "verbose",
-        short = "v",
-        global = true
-    )]
+    #[structopt(name = "simpleverbose", long = "verbose", short = "v", global = true)]
     pub verbose: bool,
 }
 

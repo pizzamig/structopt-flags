@@ -39,6 +39,17 @@ fn test_verbose_4() {
     cmd.args(&["-q"]).assert().failure();
 }
 
+#[test]
+fn test_verbose_5() {
+    let example = CargoBuild::new().example("verbose").run().unwrap();
+    let mut cmd = example.command();
+    let output = cmd.args(&["-h"]).unwrap();
+    output.clone().assert().success();
+    output
+        .assert()
+        .stdout(predicates::str::contains("An example using verbose flag\n"));
+}
+
 #[cfg(feature = "simplelog")]
 #[test]
 fn test_verbose_simplelog_1() {

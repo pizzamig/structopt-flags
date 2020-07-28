@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.3.6] - 2020-07-28
+### Fixed
+- help message: structopt recently has an internal refactor that caused an issue with flatten.
+  This version reworked entirely the documentation to workaround this bug that won't be fixed soon
+
 ## [0.3.5] - 2019-09-22
 ### Changed
 - structopt: update to 0.3

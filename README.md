@@ -18,13 +18,9 @@ structopt-flags = "0.3"
 In your code, you can use one or more flags provided by this crate.
 For instance:
 ```rust
-extern crate failure;
-#[allow(unused_imports)]
-#[macro_use]
 extern crate structopt;
 extern crate structopt_flags;
 
-use failure::Error;
 use structopt::StructOpt;
 use structopt_flags::LogLevel; // traits for flags that can provide a log level
 
@@ -35,11 +31,10 @@ struct Opt {
     verbose: structopt_flags::Verbose,
 }
 
-fn main() -> Result<(), Error> {
+fn main() {
     let opt = Opt::from_args();
 	let _log_level = opt.verbose.get_level_filter();
 	// set the log level of your preferred log crate
-    Ok(())
 }
 ```
 

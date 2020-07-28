@@ -1,6 +1,6 @@
 [package]
 name = "structopt-flags"
-version = "0.3.5"
+version = "0.3.6"
 authors = ["Luca Pizzamiglio <luca.pizzamiglio@gmail.com>"]
 edition = "2018"
 readme = "README.md"
@@ -9,7 +9,6 @@ categories = ["command-line-interface"]
 keywords = ["clap","structopt","cli","flags"]
 repository = "https://github.com/pizzamig/structopt-flags"
 description = "Collection of reusable flags for StructOpt"
-build = "build.rs"
 
 [package.metadata.docs.rs]
 all-features = true
@@ -35,6 +34,7 @@ escargot = "0.5"
 failure = "0.1"
 skeptic = "0.13"
 predicates = "1"
+structopt = "0.3"
 
 [[example]]
 name = "verbose_simplelog"
