@@ -23,16 +23,16 @@ default = []
 [dependencies]
 structopt = "0.3"
 log = "0.4"
-simplelog = { version = "0.7", optional = true }
+simplelog = { version = "0.8", optional = true }
 
 [build-dependencies]
-skeptic = "0.13"
+skeptic = { git = 'https://github.com/andygauge/rust-skeptic'}
 
 [dev-dependencies]
-assert_cmd = "0.11"
+assert_cmd = "1"
 escargot = "0.5"
 failure = "0.1"
-skeptic = "0.13"
+skeptic = { git = 'https://github.com/andygauge/rust-skeptic'}
 predicates = "1"
 structopt = "0.3"
 
