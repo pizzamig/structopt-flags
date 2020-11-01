@@ -90,7 +90,7 @@ fn test_verbose_simplelog_3() {
     let output = cmd.args(&["-vvvvvv"]).unwrap();
     output.clone().assert().success();
     output.assert().stdout(predicates::str::ends_with(
-        "verbose_simplelog: [examples/verbose_simplelog.rs:25] TRACE\n",
+        "verbose_simplelog: [examples/verbose_simplelog.rs:16] TRACE\n",
     ));
 }
 
@@ -178,7 +178,7 @@ fn test_verbosenodef_simplelog_2() {
     let output = cmd.args(&["-vvvvvvvvv"]).unwrap();
     output.clone().assert().success();
     output.assert().stdout(predicates::str::ends_with(
-        "verbose_no_default_simplelog: [examples/verbose_no_default_simplelog.rs:30] TRACE\n",
+        "verbose_no_default_simplelog: [examples/verbose_no_default_simplelog.rs:20] TRACE\n",
     ));
 }
 
