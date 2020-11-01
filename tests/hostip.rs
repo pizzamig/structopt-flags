@@ -1,6 +1,3 @@
-extern crate assert_cmd;
-extern crate escargot;
-
 use assert_cmd::prelude::*;
 use escargot::CargoBuild;
 
