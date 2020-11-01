@@ -1,8 +1,3 @@
-#[allow(unused_imports)]
-#[macro_use]
-extern crate structopt;
-extern crate structopt_flags;
-
 use structopt::StructOpt;
 use structopt_flags::LogLevel;
 

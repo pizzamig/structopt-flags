@@ -1,13 +1,3 @@
-extern crate failure;
-extern crate structopt_flags;
-#[allow(unused_imports)]
-#[macro_use]
-extern crate structopt;
-#[allow(unused_imports)]
-#[macro_use]
-extern crate log;
-
-use failure::Error;
 use log::LevelFilter;
 use structopt::StructOpt;
 use structopt_flags::GetWithDefault;
@@ -23,10 +13,10 @@ struct Opt {
 
 const DEFAULT_LOG_LEVEL: LevelFilter = LevelFilter::Off;
 
-fn main() -> Result<(), Error> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let opt = Opt::from_args();
     #[cfg(feature = "simplelog")]
     opt.verbose.set_with_default(DEFAULT_LOG_LEVEL);
-    trace!("{}", opt.verbose.get_with_default(DEFAULT_LOG_LEVEL));
+    log::trace!("{}", opt.verbose.get_with_default(DEFAULT_LOG_LEVEL));
     Ok(())
 }

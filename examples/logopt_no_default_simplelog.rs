@@ -1,10 +1,3 @@
-#[allow(unused_imports)]
-#[macro_use]
-extern crate structopt;
-#[macro_use]
-extern crate log;
-extern crate structopt_flags;
-
 use log::LevelFilter;
 use structopt::StructOpt;
 use structopt_flags::GetWithDefault;
@@ -27,5 +20,5 @@ fn main() {
     let opt = Opt::from_args();
     #[cfg(feature = "simplelog")]
     opt.log_level.set_with_default(DEFAULT_LOG_LEVEL);
-    debug!("{}", opt.log_level.get_with_default(DEFAULT_LOG_LEVEL));
+    log::debug!("{}", opt.log_level.get_with_default(DEFAULT_LOG_LEVEL));
 }

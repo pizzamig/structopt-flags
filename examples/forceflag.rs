@@ -1,10 +1,3 @@
-#[allow(unused_imports)]
-#[macro_use]
-extern crate structopt;
-extern crate failure;
-extern crate structopt_flags;
-
-use failure::Error;
 use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
@@ -14,7 +7,7 @@ struct Opt {
     forceflag: structopt_flags::ForceFlag,
 }
 
-fn main() -> Result<(), Error> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let opt = Opt::from_args();
     println!("{}", opt.forceflag);
     Ok(())

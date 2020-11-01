@@ -1,10 +1,3 @@
-extern crate failure;
-extern crate structopt_flags;
-#[allow(unused_imports)]
-#[macro_use]
-extern crate structopt;
-
-use failure::Error;
 use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
@@ -14,7 +7,7 @@ struct Opt {
     config: structopt_flags::ConfigFile,
 }
 
-fn main() -> Result<(), Error> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let opt = Opt::from_args();
     let _config_file = opt.config.get_filename();
     println!("{}", opt.config);

@@ -1,13 +1,3 @@
-extern crate failure;
-extern crate structopt_flags;
-#[allow(unused_imports)]
-#[macro_use]
-extern crate structopt;
-#[allow(unused_imports)]
-#[macro_use]
-extern crate log;
-
-use failure::Error;
 use log::LevelFilter;
 use structopt::StructOpt;
 use structopt_flags::GetWithDefault;
@@ -19,7 +9,7 @@ struct Opt {
     verbose: structopt_flags::VerboseNoDef,
 }
 
-fn main() -> Result<(), Error> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let opt = Opt::from_args();
     let log_filter = opt.verbose.get_with_default(LevelFilter::Off);
     println!("{}", log_filter);

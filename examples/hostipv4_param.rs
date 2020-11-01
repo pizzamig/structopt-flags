@@ -1,10 +1,3 @@
-#[allow(unused_imports)]
-#[macro_use]
-extern crate structopt;
-extern crate failure;
-extern crate structopt_flags;
-
-use failure::Error;
 use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
@@ -14,7 +7,7 @@ struct Opt {
     hostipv4: structopt_flags::HostV4Param,
 }
 
-fn main() -> Result<(), Error> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let opt = Opt::from_args();
     let ipv4 = opt.hostipv4.host_addr;
     println!("{}", ipv4);

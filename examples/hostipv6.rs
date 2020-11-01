@@ -1,10 +1,3 @@
-#[allow(unused_imports)]
-#[macro_use]
-extern crate structopt;
-extern crate failure;
-extern crate structopt_flags;
-
-use failure::Error;
 use std::net::Ipv6Addr;
 use structopt::StructOpt;
 use structopt_flags::GetWithDefault;
@@ -16,7 +9,7 @@ struct Opt {
     hostipv6: structopt_flags::HostV6Opt,
 }
 
-fn main() -> Result<(), Error> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let opt = Opt::from_args();
     let ipv6 = opt
         .hostipv6

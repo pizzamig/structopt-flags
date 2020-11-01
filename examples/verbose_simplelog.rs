@@ -1,12 +1,3 @@
-#[allow(unused_imports)]
-#[macro_use]
-extern crate structopt;
-extern crate failure;
-extern crate structopt_flags;
-#[macro_use]
-extern crate log;
-
-use failure::Error;
 use structopt::StructOpt;
 #[cfg(feature = "simplelog")]
 use structopt_flags::LogLevel;
@@ -18,10 +9,10 @@ struct Opt {
     verbose: structopt_flags::Verbose,
 }
 
-fn main() -> Result<(), Error> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let opt = Opt::from_args();
     #[cfg(feature = "simplelog")]
     opt.verbose.set_log_level();
-    trace!("{}", opt.verbose);
+    log::trace!("{}", opt.verbose);
     Ok(())
 }
