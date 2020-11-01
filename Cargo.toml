@@ -31,7 +31,6 @@ skeptic = { git = 'https://github.com/andygauge/rust-skeptic'}
 [dev-dependencies]
 assert_cmd = "1"
 escargot = "0.5"
-failure = "0.1"
 skeptic = { git = 'https://github.com/andygauge/rust-skeptic'}
 predicates = "1"
 structopt = "0.3"
