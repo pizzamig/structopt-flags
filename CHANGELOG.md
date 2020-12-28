@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - DryRun: new flag for `-n` of `--dry-run`
 - Yes: new flag for `-y` of `--yes`
 
+### Changed
+- CI: move to Github Actions
+
 ## [0.3.6] - 2020-07-28
 ### Fixed
 - help message: structopt recently has an internal refactor that caused an issue with flatten.
