@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- DryRun: new flag for `-n` of `--dry-run`
+- Yes: new flag for `-y` of `--yes`
 
 ## [0.3.6] - 2020-07-28
 ### Fixed
