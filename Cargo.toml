@@ -23,7 +23,7 @@ default = []
 [dependencies]
 structopt = "0.3"
 log = "0.4"
-simplelog = { version = "0.8", optional = true }
+simplelog = { version = "0.10", optional = true }
 
 [build-dependencies]
 skeptic = { git = 'https://github.com/andygauge/rust-skeptic'}
