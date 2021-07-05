@@ -32,7 +32,7 @@ skeptic = { git = 'https://github.com/andygauge/rust-skeptic'}
 assert_cmd = "1"
 escargot = "0.5"
 skeptic = { git = 'https://github.com/andygauge/rust-skeptic'}
-predicates = "1"
+predicates = "2"
 structopt = "0.3"
 
 [[example]]
